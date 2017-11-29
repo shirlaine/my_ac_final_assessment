@@ -14,4 +14,18 @@
       <%= link_to "New Note", new_users_note_path, method: :get %>
       <br>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      <br>
+
+    <h5> All followees of <%= current_user.username %> </h5>
+      <p>Count: <%= current_user.followees.count %></p>
+      <% current_user.followees.each do |followee| %>
+      <%= followee.username %>
+      <% end %>
+
+    <h5> All leaders of <%= current_user.username %> </h5>
+      <p>Count: <%= current_user.leaders.count %></p>
+      <% current_user.leaders.each do |leader| %>
+      <%= leader.username %>
+      <% end %>
+
 </div>

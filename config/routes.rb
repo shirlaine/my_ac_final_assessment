@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'notes#index'
+
   resources :notes, only: [:index]
+
   namespace :users do
     resources :notes do
       resources :likes, only: [:create, :destroy]
     end
   end
+
+  resources :relationships, only: [:create, :destroy]
 
 end
