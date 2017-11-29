@@ -48,9 +48,12 @@ gem 'faker'
 # Devise Authentication
 gem 'devise'
 
-
 # Facebook OmniAuth
 gem 'omniauth-facebook'
+
+# Mailcatcher
+gem 'mailcatcher'
+
 
 
 
