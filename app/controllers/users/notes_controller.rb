@@ -4,7 +4,7 @@ class Users::NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index # show all users im following and list of notes
-    @notes = Note.all
+    @notes = current_user.notes
   end
 
   def show; end
@@ -14,10 +14,10 @@ class Users::NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(notes_params)
+    @note = current_user.notes.build(notes_params)
     if @note.save
       flash['notice'] = 'Your note has been created!'
-      redirect_to notes_path
+      redirect_to users_notes_path
     else
       flash['alert'] = 'Your note was not saved!'
       render :new
@@ -29,7 +29,7 @@ class Users::NotesController < ApplicationController
   def update
     if @note.update(notes_params)
       flash['notice'] = 'Your note has been updated!'
-      redirect_to notes_path
+      redirect_to users_notes_path
     else
       flash['alert'] = 'Your note was not updated'
       render :edit
@@ -38,8 +38,8 @@ class Users::NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    flash['notice'] = 'Your note has destroyed!'
-    redirect_to notes_path
+    flash['notice'] = 'Your note has been destroyed!'
+    redirect_to users_notes_path
   end
 
   private
@@ -49,7 +49,7 @@ class Users::NotesController < ApplicationController
   end
 
   def prepare_note
-    @note = Note.find(params[:id])
+    @note = current_user.notes.find(params[:id])
   end
 
 end

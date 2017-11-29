@@ -1,6 +1,6 @@
 <div class = "container">
 
-  <h1> All notes by user </h1>
+  <h1> All notes by @<%= current_user.username %> </h1>
 
       <% @notes.each do |note| %>
       <p>
@@ -8,7 +8,10 @@
         <%= note.title %>:
         <%= note.body %>
         <%= link_to "Show note", users_note_path(note), method: :get %>
+        <%= link_to "Destroy note", users_note_path(note), method: :delete %>
       </p>
       <% end %>
+      <%= link_to "New Note", new_users_note_path, method: :get %>
+      <br>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 </div>
