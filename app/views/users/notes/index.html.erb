@@ -4,40 +4,42 @@
 
       <p>
       <%= link_to "New Note", new_users_note_path, method: :get, class: 'btn btn-info' %>
-      <%= link_to "All Notes by All Users", notes_path, method: :get, class: 'btn btn-info' %>
+      <%= link_to "All Notes by All Users", notes_path, method: :get, class: 'btn btn-warning' %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
       </p>
       <% @notes.each do |note| %>
       <p>
-        <%= note.id %>.
         <%= note.title %>:
         <%= note.body %>
-        <%= link_to "Show note", users_note_path(note), method: :get %>
-        <%= link_to "Destroy note", users_note_path(note), method: :delete %>
+        <%= link_to "Show note", users_note_path(note), method: :get, class: 'btn btn-info btn-sm' %>
+        <%= link_to "Destroy note", users_note_path(note), method: :delete, class: 'btn btn-danger btn-sm' %>
       </p>
       <% end %>
 
+      <hr>
 
-    <h5> All followees of <%= current_user.username %> </h5>
+    <h3>All followees of <%= current_user.username %></h3>
       <p>Count: <%= current_user.followees.count %></p>
       <% current_user.followees.each do |followee| %>
-      <%= followee.username %>
+        <p>@<%= followee.username %></p>
       <% end %>
 
-    <h5> All leaders of <%= current_user.username %> </h5>
+    <h3>All leaders of <%= current_user.username %></h3>
       <p>Count: <%= current_user.leaders.count %></p>
       <% current_user.leaders.each do |leader| %>
-      <%= leader.username %>
+        <p>@<%= leader.username %></p>
       <% end %>
 
-      <h1> All notes by @<%= current_user.username %>'s leaders </h1>
+      <hr>
+
+      <h1>All notes by @<%= current_user.username %>'s leaders</h1>
 
       <% @feed.each do |note| %>
       <p>
-        <%= note.id %>.
+        <strong><%= note.user.username %></strong>
         <%= note.title %>:
-        <%= note.body %>
-        <%= link_to "Show note", users_note_path(note), method: :get %>
+        <p><%= note.body %></p>
+        <p><%= link_to "Show note", users_note_path(note), method: :get, class: 'btn btn-info' %></p>
       </p>
       <% end %>
 
