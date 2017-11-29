@@ -10,6 +10,7 @@ class Users::NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+    @relationship = current_user.active_relationships.new
   end
 
   def new

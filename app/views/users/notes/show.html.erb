@@ -15,7 +15,7 @@
     <% end %>
 
     <br>
-    <%= link_to "Follow @#{@note.user.username}", relationships_path, method: :post %>
 
+    <%= render 'users/notes/follow_form' %>
 
 </div>

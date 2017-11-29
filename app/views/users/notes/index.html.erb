@@ -2,11 +2,11 @@
 
   <h1> All notes by @<%= current_user.username %> </h1>
 
-      <%= link_to "New Note", new_users_note_path, method: :get %>
-      <br>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-      <br>
-
+      <p>
+      <%= link_to "New Note", new_users_note_path, method: :get, class: 'btn btn-info' %>
+      <%= link_to "All Notes by All Users", notes_path, method: :get, class: 'btn btn-info' %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
+      </p>
       <% @notes.each do |note| %>
       <p>
         <%= note.id %>.

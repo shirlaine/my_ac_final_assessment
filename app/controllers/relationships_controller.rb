@@ -1,4 +1,4 @@
-class RelationshipController < ApplicationController
+class RelationshipsController < ApplicationController
 
   def create # action to follow
     @user = User.find(params[:followee_id])
@@ -9,7 +9,7 @@ class RelationshipController < ApplicationController
 
   def destroy # action to unfollow
     @user = User.find(params[:id])
-    @relationship = current_user.unfollow!(@user)
+    @relationship = current_user.unfollow(@user)
     flash[:alert] = "You have unfollowed#{@user.username}"
     redirect_to users_notes_path
   end
