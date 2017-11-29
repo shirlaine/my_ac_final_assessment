@@ -48,6 +48,12 @@ gem 'faker'
 # Devise Authentication
 gem 'devise'
 
+
+# Facebook OmniAuth
+gem 'omniauth-facebook'
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -59,6 +65,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Gem for Rspec-controller
   gem 'rails-controller-testing'
+  # Dot ENV
+  gem 'dotenv-rails'
 end
 
 group :development do
