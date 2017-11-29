@@ -13,7 +13,14 @@ class NotesController < ApplicationController
   end
 
   def create
-
+    @note = Note.new(notes_params)
+    if @note.save
+      flash["notice"] = "Your note has been created!"
+      redirect_to notes_path
+    else
+      flash["alert"] = "Your note was not saved!"
+      render :new
+    end
   end
 
   def edit; end
@@ -25,7 +32,7 @@ class NotesController < ApplicationController
 private
 
   def notes_params
-
+    params.require(:note).permit(:title, :body)
   end
 
 end
