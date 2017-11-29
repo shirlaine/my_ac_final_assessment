@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   has_many :notes, dependent: :destroy
-  has_many :likes, through: :notes
+  has_many :likes
 
   # following others
   has_many :active_relationships, foreign_key: :followee_id, class_name: 'Relationship', dependent: :destroy
