@@ -7,5 +7,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   has_many :notes, dependent: :destroy
+  has_many :likes, through: :notes
+
+  def like
+
+  end
 
 end
