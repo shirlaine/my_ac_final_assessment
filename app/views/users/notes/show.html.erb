@@ -1,8 +1,18 @@
 <div class = "container">
 
   <h1> Note No. <%= @note.id %> </h1>
+    <p>This Note belong  to: <%= current_user.username %></p>
 
-    <p><strong><%= @note.title %></strong></p>
-    <p><%= @note.body %></p>
+    <p>Title: <%= @note.title %></p>
+    <p>Content: <%= @note.body %></p>
+    <p>No.of likes: <%= @note.likes.count %></p>
+
+    <% if @note.likes.find_by(user_id: current_user).present? %>
+
+      <%= link_to "Unlike note", users_note_like_path(@note), method: :delete %>
+    <% else %>
+      <%= link_to "Like note", users_note_likes_path(@note), method: :post %>
+    <% end %>
+
 
 </div>

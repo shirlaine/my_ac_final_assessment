@@ -1,13 +1,16 @@
 class Users::NotesController < ApplicationController
 
-  before_action :prepare_note, only: [:show, :edit, :update, :destroy]
+  before_action :prepare_note, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index # show all users im following and list of notes
     @notes = current_user.notes
   end
 
-  def show; end
+  def show
+    @note = Note.find(params[:id])
+    @user = current_user
+  end
 
   def new
     @note = Note.new

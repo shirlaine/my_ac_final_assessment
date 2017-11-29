@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   root to: 'notes#index'
   resources :notes, only: [:index]
   namespace :users do
-    resources :notes
+    resources :notes do
+      resources :likes, only: [:create, :destroy]
+    end
   end
+
 end

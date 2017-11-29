@@ -7,6 +7,7 @@
         <%= note.id %>.
         <%= note.title %>:
         <%= note.body %>
+        <%= link_to "Show note", users_note_path(note), method: :get %>
       </p>
       <% end %>
       <%= link_to "Sign in", new_user_session_path, method: :get %>
