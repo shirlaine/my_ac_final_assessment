@@ -8,9 +8,13 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
-  def new; end
+  def new
+    @note = Note.new
+  end
 
-  def create; end
+  def create
+
+  end
 
   def edit; end
 
