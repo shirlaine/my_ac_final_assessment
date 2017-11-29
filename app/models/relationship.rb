@@ -6,5 +6,4 @@ class Relationship < ApplicationRecord
   validates :leader, presence: true
   validates :followee, presence: true
 
-
 end
