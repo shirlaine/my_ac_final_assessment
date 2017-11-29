@@ -1,14 +1,13 @@
 <div class = "container">
-
   <h1> All notes by All users </h1>
+  <%= link_to "Sign in", new_user_session_path, method: :get, class: 'btn btn-info' %>
 
       <% @notes.each do |note| %>
       <p>
-        <%= note.id %>.
-        <%= note.title %>:
+        <strong><%= note.user.username %></strong>
+        <p><%= note.title %>:</p>
         <%= note.body %>
-        <%= link_to "Show note", users_note_path(note), method: :get %>
+        <p><%= link_to "Show note", users_note_path(note), method: :get, class: 'btn btn-info' %></p>
       </p>
       <% end %>
-      <%= link_to "Sign in", new_user_session_path, method: :get %>
 </div>

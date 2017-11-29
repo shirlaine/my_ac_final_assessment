@@ -7,15 +7,14 @@
     <p>Content: <%= @note.body %></p>
     <p>No.of likes: <%= @note.likes.count %></p>
 
-    <% if @note.likes.find_by(user_id: current_user).present? %>
+   <% if @note.likes.find_by(user_id: current_user).present? %>
 
-      <%= link_to "Unlike note", users_note_like_path(@note), method: :delete %>
+       <p><%= link_to "Unlike note", users_note_like_path(@note), method: :delete, class: 'btn btn-danger' %></p>
     <% else %>
-      <%= link_to "Like note", users_note_likes_path(@note), method: :post %>
-    <% end %>
+        <p><%= link_to "Like note", users_note_likes_path(@note), method: :post, class: 'btn btn-warning' %></p>
+    <% end %></p>
 
-    <br>
-
-    <%= render 'users/notes/follow_form' %>
+    <p><%= render 'users/notes/follow_form' %></p>
+    <p><%= link_to "Back to Index", users_notes_path, method: :get, class: 'btn btn-info' %></p>
 
 </div>
