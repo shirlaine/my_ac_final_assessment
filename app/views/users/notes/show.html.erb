@@ -14,5 +14,8 @@
       <%= link_to "Like note", users_note_likes_path(@note), method: :post %>
     <% end %>
 
+    <br>
+
+    <%= render 'users/notes/follow_form' %>
 
 </div>

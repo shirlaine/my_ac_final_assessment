@@ -1,0 +1,7 @@
+<% if @note.user != current_user %>
+    <% if current_user.following?(@note.user) %>
+      <%= render 'users/notes/unfollow' %>
+    <% else %>
+      <%= render 'users/notes/follow' %>
+    <% end %>
+<% end %>
