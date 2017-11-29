@@ -1,0 +1,13 @@
+<div class = "container">
+
+  <h1> All notes by user </h1>
+
+      <% @notes.each do |note| %>
+      <p>
+        <%= note.id %>.
+        <%= note.title %>:
+        <%= note.body %>
+      </p>
+      <% end %>
+
+</div>

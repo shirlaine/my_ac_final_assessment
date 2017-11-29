@@ -1,0 +1,11 @@
+<div class = "container">
+
+  <h1> New note</h1>
+
+   <%= simple_form_for @note, url: notes_path, method: :post do |f| %>
+     <%= f.input :title %>
+     <%= f.input :body %>
+     <%= f.submit %>
+   <% end %>
+
+</div>
