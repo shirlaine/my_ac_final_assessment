@@ -5,11 +5,11 @@ class Users::NotesController < ApplicationController
 
   def index # show all users im following and list of notes
     @notes = current_user.notes
+    @feed = Note.where(user_id: current_user.leaders.ids)
   end
 
   def show
     @note = Note.find(params[:id])
-    @user = current_user
   end
 
   def new

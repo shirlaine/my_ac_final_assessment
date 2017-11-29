@@ -2,6 +2,11 @@
 
   <h1> All notes by @<%= current_user.username %> </h1>
 
+      <%= link_to "New Note", new_users_note_path, method: :get %>
+      <br>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      <br>
+
       <% @notes.each do |note| %>
       <p>
         <%= note.id %>.
@@ -11,10 +16,7 @@
         <%= link_to "Destroy note", users_note_path(note), method: :delete %>
       </p>
       <% end %>
-      <%= link_to "New Note", new_users_note_path, method: :get %>
-      <br>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-      <br>
+
 
     <h5> All followees of <%= current_user.username %> </h5>
       <p>Count: <%= current_user.followees.count %></p>
@@ -26,6 +28,17 @@
       <p>Count: <%= current_user.leaders.count %></p>
       <% current_user.leaders.each do |leader| %>
       <%= leader.username %>
+      <% end %>
+
+      <h1> All notes by @<%= current_user.username %>'s leaders </h1>
+
+      <% @feed.each do |note| %>
+      <p>
+        <%= note.id %>.
+        <%= note.title %>:
+        <%= note.body %>
+        <%= link_to "Show note", users_note_path(note), method: :get %>
+      </p>
       <% end %>
 
 </div>
