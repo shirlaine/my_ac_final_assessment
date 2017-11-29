@@ -15,5 +15,4 @@ class Users::LikesController < ApplicationController
     redirect_to users_note_path(@note)
   end
 
-
 end
