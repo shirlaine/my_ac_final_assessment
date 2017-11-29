@@ -4,5 +4,6 @@ class Relationship < ApplicationRecord
   belongs_to :followee, class_name: 'User'
 
   validates :leader, presence: true
+  validates :followee, presence: true
 
 end
